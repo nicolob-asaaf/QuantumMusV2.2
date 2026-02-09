@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Database
+*.db
+*.sqlite3
+instance/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Frontend overrides (local config)
+frontend/config.override.js
+
+# Temporary files
+/tmp/
+*.tmp
