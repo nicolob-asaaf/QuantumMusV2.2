@@ -30,40 +30,80 @@ Quantum Mus es una versión del clásico juego español Mus en la que las cartas
 ### Solo frontend (sin backend)
 
 1. Abre la carpeta del proyecto.
-2. Abre `Frontend/index.html` en un navegador (doble clic o arrastrar al navegador).
+2. Abre `frontend/index.html` en un navegador (doble clic o arrastrar al navegador).
 
 O sirve la carpeta con un servidor local, por ejemplo:
 
 ```bash
-cd Frontend
+cd frontend
 npx serve .
 # o: python -m http.server 8000
 ```
 
 Luego entra en `http://localhost:3000` (o el puerto que indique).
 
-### Con backend (opcional)
+### Con backend (completo)
 
-La carpeta `backend/` contiene `app.py` y `quantum-engine.py` para una posible API o lógica de partida. Si quieres usarlos, necesitas Python y las dependencias listadas en `backend/Requisements.py`.
+La carpeta `backend/` contiene el servidor Flask + Socket.IO para juego multijugador en tiempo real.
+
+**Requisitos:**
+- Python 3.8 o superior
+- pip
+
+**Instalación y ejecución:**
+
+```bash
+cd backend
+
+# Linux/Mac
+./run.sh
+
+# Windows
+run.bat
+
+# O manualmente:
+pip install -r requirements.txt
+python server.py
+```
+
+El servidor se iniciará en `http://localhost:5000`
+
+**En producción (Render):**
+- El `Procfile` configura el servidor para despliegue
+- Variables de entorno necesarias: `PORT`, `FRONTEND_URL`, `ALLOWED_ORIGINS`
 
 ---
 
 ## Estructura del proyecto
 
 ```
-CESGA/
-├── Frontend/
-│   ├── index.html          # Punto de entrada; pantallas (portada, menú, lobby, partida)
-│   ├── styles.css          # Estilos y animaciones
-│   ├── game.js             # Lógica del juego, cartas, reparto, entrelazamiento
-│   ├── navigation.js       # Navegación entre pantallas, lobby, personajes
+QuantumMusV2.2/
+├── frontend/
+│   ├── index.html             # Punto de entrada; pantallas (portada, menú, lobby, partida)
+│   ├── styles.css             # Estilos principales y animaciones
+│   ├── game.js                # Lógica del juego, cartas, reparto, entrelazamiento
+│   ├── navigation.js          # Navegación entre pantallas, lobby, personajes
+│   ├── insp.js                # Funciones de inspección y debugging
+│   ├── config.js              # Configuración del juego
+│   ├── config.override.js     # Configuración local (no se sube a git)
 │   ├── assets/
-│   │   └── generate-cards.js  # Generación de Bloch spheres y personajes
-│   └── ENTANGLEMENT_GUIDE.md   # Guía de entrelazamiento (4/8 reyes)
+│   │   ├── generate-cards.js  # Generación de gráficos de cartas
+│   │   └── stiles.ccs         # Estilos adicionales de cartas
+│   └── css/
+│       └── navigation-styles.css  # Estilos de navegación
 ├── backend/
-│   ├── app.py
-│   ├── quantum-engine.py
-│   └── Requisements.py
+│   ├── server.py              # Servidor Flask + Socket.IO
+│   ├── game_logic.py          # Lógica principal del juego
+│   ├── room_manager.py        # Gestión de salas
+│   ├── card_deck.py           # Manejo de barajas
+│   ├── Logica_cuantica/       # Mecánicas cuánticas (Qiskit)
+│   │   ├── baraja.py          # Baraja cuántica
+│   │   ├── cartas.py          # Cartas cuánticas
+│   │   ├── dealer.py          # Repartidor
+│   │   ├── efecto_tunel.py    # Efecto túnel cuántico
+│   │   └── jugador.py         # Clase jugador
+│   ├── models.py              # Modelos de base de datos
+│   └── requirements.txt       # Dependencias Python
 └── README.md
 ```
 

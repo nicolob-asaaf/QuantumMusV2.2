@@ -67,14 +67,26 @@ The server will start on `http://localhost:5000`
 
 ```
 backend/
-├── server.py              # Main Flask + Socket.IO server
-├── game_manager.py        # Manages active game instances
-├── room_manager.py        # Manages game rooms/lobbies
-├── game_logic.py          # Main game state and logic
-├── round_handlers.py      # Round-specific logic (MUS, GRANDE, CHICA)
-├── card_deck.py           # Quantum card and deck management
-├── models.py              # Database models
-└── requirements.txt       # Python dependencies
+├── server.py                  # Main Flask + Socket.IO server
+├── game_manager.py            # Manages active game instances
+├── room_manager.py            # Manages game rooms/lobbies
+├── game_logic.py              # Main game state and logic
+├── round_handlers.py          # Round-specific logic (MUS, GRANDE, CHICA)
+├── card_deck.py               # Quantum card and deck management
+├── quantum_collapse.py        # Quantum state collapse logic
+├── entanglement_system.py     # Card entanglement mechanics
+├── generic_betting_handler.py # Generic betting logic
+├── grande_betting_handler.py  # GRANDE phase betting
+├── Logica_cuantica/           # Quantum card mechanics (Qiskit)
+│   ├── baraja.py              # Quantum deck implementation
+│   ├── cartas.py              # Quantum card class
+│   ├── dealer.py              # Dealer logic
+│   ├── efecto_tunel.py        # Tunnel effect mechanics
+│   └── jugador.py             # Player class
+├── models.py                  # Database models
+├── requirements.txt           # Python dependencies
+├── run.sh                     # Linux/Mac startup script
+└── run.bat                    # Windows startup script
 ```
 
 ## Game Flow
