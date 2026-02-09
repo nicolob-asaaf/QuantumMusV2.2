@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function mapRoomPlayersToLocal(roomPlayers, amHost) {
-    // Only allow valid characters (including new women)
+    // Only allow valid characters (including new women), but also allow players without characters (null/undefined)
     const validCharacterIds = characters.map(c => c.id);
     return roomPlayers
-      .filter(p => validCharacterIds.includes(p.character))
+      .filter(p => !p.character || validCharacterIds.includes(p.character))
       .map((p, i) => {
         const char = characters.find(c => c.id === (p.character || ''));
         return {
